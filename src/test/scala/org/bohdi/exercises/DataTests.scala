@@ -135,22 +135,4 @@ class DataTests extends AnyFunSuite with Matchers {
     assert(Failure("Divide by zero") == Calculation./(Success(8), 0))
   }
 
-  test("Recursion") {
-    sealed trait IntList
-    case object End extends IntList
-    final case class Pair(head: Int, tail: IntList) extends IntList
-
-    @tailrec
-    def sum(list: IntList, accum: Int = 0): Int = list match {
-      case End => accum
-      case Pair(head, tail) => sum(tail, head + accum)
-    }
-
-    val example = Pair(1, Pair(2, Pair(3, End)))
-    assert(6 == sum(example))
-    assert(5 == sum(example.tail))
-    assert(0 == sum(End))
-
-  }
-
 }
