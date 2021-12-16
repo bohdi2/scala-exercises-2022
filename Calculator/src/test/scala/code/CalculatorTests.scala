@@ -1,8 +1,13 @@
-package org.bohdi.exercises
+package code
 
 import org.scalatest._
 import matchers.should._
 import org.scalatest.funsuite.AnyFunSuite
+
+sealed trait Result[T]
+final case class Success[T](value: T) extends Result[T]
+final case class Failure[T](reason: String) extends Result[T]
+
 
 sealed trait Expression {
 

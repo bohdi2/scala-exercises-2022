@@ -1,4 +1,4 @@
-package org.bohdi.exercises
+package code
 
 import org.scalatest._
 import matchers.should._
