@@ -7,14 +7,17 @@ ThisBuild / organizationName := "bodhi"
 
 lazy val commonSettings = Seq(
   scalacOptions ++= Seq("-deprecation", "-Xfatal-warnings"),
-  libraryDependencies += scalaTest % Test
+  libraryDependencies ++= Seq(
+    scalaTest % Test,
+   "org.typelevel" %% "cats-core" % "2.1.0"
+  )
 )
 
 
 lazy val root = (project in file("."))
   .settings(
     commonSettings,
-    name := "bodhi",
+    name := "bodhi"
   )
   .aggregate(
     calculator,
@@ -22,40 +25,36 @@ lazy val root = (project in file("."))
     exercises,
     genericFold,
     genericList,
-    intList)
-
-lazy val calculator = (project in file("Calculator"))
-  .settings(
-    commonSettings,
-    name := "exercises",
+    intList,
+    runLength,
+    subGroup,
+    typeClasses,
+    cats1,
+    cats2,
+    cats3,
+    cats4
   )
 
-lazy val data = (project in file("Data"))
-  .settings(
-    commonSettings,
-    name := "exercises",
-  )
+lazy val calculator = (project in file("Calculator")).settings(commonSettings  )
 
-lazy val exercises = (project in file("exercises"))
-  .settings(
-    commonSettings,
-  )
+lazy val data = (project in file("Data")).settings(commonSettings)
 
-lazy val genericFold = (project in file("GenericFold"))
-  .settings(
-    commonSettings,
-  )
+lazy val exercises = (project in file("exercises")).settings(commonSettings)
 
-lazy val genericList = (project in file("GenericList"))
-  .settings(
-    commonSettings,
-  )
+lazy val genericFold = (project in file("GenericFold")).settings(commonSettings)
 
-lazy val intList = (project in file("IntList"))
-  .settings(
-    commonSettings,
-    name := "exercises",
-  )
+lazy val genericList = (project in file("GenericList")).settings(commonSettings)
+
+lazy val intList = (project in file("IntList")).settings(commonSettings)
+
+lazy val runLength = (project in file("RunLength")).settings(commonSettings)
+lazy val subGroup = (project in file("SubGroup")).settings(commonSettings)
+lazy val typeClasses = (project in file("TypeClasses")).settings(commonSettings)
+
+lazy val cats1 = (project in file("cats_1")).settings(commonSettings)
+lazy val cats2 = (project in file("cats_2")).settings(commonSettings)
+lazy val cats3 = (project in file("cats_3")).settings(commonSettings)
+lazy val cats4 = (project in file("cats_4")).settings(commonSettings)
 
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.10" % "test"
 
