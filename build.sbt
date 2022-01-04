@@ -20,11 +20,13 @@ lazy val root = (project in file("."))
     name := "bodhi"
   )
   .aggregate(
+    puzzles,
     calculator,
     data,
     exercises,
     genericFold,
     genericList,
+    heap,
     intList,
     runLength,
     subGroup,
@@ -35,16 +37,13 @@ lazy val root = (project in file("."))
     cats4
   )
 
-lazy val calculator = (project in file("Calculator")).settings(commonSettings  )
-
+lazy val puzzles = (project in file("Puzzles")).settings(commonSettings)
+lazy val calculator = (project in file("Calculator")).settings(commonSettings)
 lazy val data = (project in file("Data")).settings(commonSettings)
-
 lazy val exercises = (project in file("exercises")).settings(commonSettings)
-
 lazy val genericFold = (project in file("GenericFold")).settings(commonSettings)
-
 lazy val genericList = (project in file("GenericList")).settings(commonSettings)
-
+lazy val heap = (project in file("Heap")).settings(commonSettings)
 lazy val intList = (project in file("IntList")).settings(commonSettings)
 
 lazy val runLength = (project in file("RunLength")).settings(commonSettings)
