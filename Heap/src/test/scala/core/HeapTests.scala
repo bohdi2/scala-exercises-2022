@@ -100,7 +100,6 @@ object HeapTests {
       for (i <- data.length - 1 until 0 by -1) {
         val parent = (i - 1) / 2
         if (data(i) > data(parent)) {
-          //println(s"CJH isValid i: ${x(i)} > ${x(parent)}")
           return false
         }
       }
