@@ -20,7 +20,7 @@ object HeapTests {
     def top: Int = apply(0)
     def isRoot(index: Int): Boolean = index == 0
     def calcParentIndex(childIndex: Int): Int = (childIndex - 1) / 2
-    def leftChild(parentIndex: Int): Int = parentIndex*2 + 1
+    def calcLeftChild(parentIndex: Int): Int = parentIndex*2 + 1
     def rightChild(parentIndex: Int): Int = parentIndex*2 + 2
 
 
@@ -50,7 +50,7 @@ object HeapTests {
         childIndex
     }
 
-    def removeTop: Heap = {
+    def removeTop(): Heap = {
       update(0, data.remove(data.size - 1))
       data.trimToSize()
       siftDown(0)
@@ -58,7 +58,7 @@ object HeapTests {
     }
 
     def siftDown(parentIndex: Int): Heap = {
-      val leftChildIndex = leftChild(parentIndex)
+      val leftChildIndex = calcLeftChild(parentIndex)
       val rightChildIndex = rightChild(parentIndex)
       //println(s"CJH siftDown ${this}, ${x(parentIndex)} -> ${x(leftChildIndex)}, ${x(rightChildIndex)}")
 
@@ -79,7 +79,7 @@ object HeapTests {
     }
 
     def x(n: Int): String = {
-      if (n >= size) s"${n}/error" else s"${n}/${data(n)}"
+      if (n >= size) s"$n/error" else s"$n/${data(n)}"
     }
 
 
@@ -103,7 +103,7 @@ object HeapTests {
           return false
         }
       }
-      return true
+      true
     }
 
 
@@ -149,9 +149,9 @@ class HeapTests extends AnyFunSuite {
   }
 
   test("heap remove") {
-    assert(Heap(100, 50, 40).removeTop.isValid)
-    assert(Heap(100, 40, 50, 30).removeTop.isValid)
-    assert(Heap(100, 40, 50, 30, 5, 2, 3, 4).removeTop.isValid)
+    assert(Heap(100, 50, 40).removeTop().isValid)
+    assert(Heap(100, 40, 50, 30).removeTop().isValid)
+    assert(Heap(100, 40, 50, 30, 5, 2, 3, 4).removeTop().isValid)
 
   }
 
