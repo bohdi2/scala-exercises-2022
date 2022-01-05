@@ -27,12 +27,12 @@ class Cats1EqTest extends AnyFunSuite {
     //val cat3 = Cat("Heathcliff", 33, "orange and black")
 
     cat1 =!= cat2
-    cat1 === cat2
+    cat1 eqv cat2
 
     val optionCat1 = Option(cat1)
     val optionCat2 = Option.empty[Cat]
 
-    assert(optionCat1 =!= optionCat2)
+    assert(optionCat1 !== optionCat2)
 
   }
 
